@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" data-toggle="tab" href="#users">Users</a>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#products">Products</a>
+  </li>
+</ul>
+
+<div class="tab-content">
+
+  <div class="tab-pane fade show active" id="users">
+    {% include 'admin/users.html' %}
+  </div>
+
+  <div class="tab-pane fade" id="products">
+    {% include 'admin/products.html' %}
+  </div>
+
+</div>
+
+{% endblock %}

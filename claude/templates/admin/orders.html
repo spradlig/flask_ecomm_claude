@@ -1,0 +1,30 @@
+{% extends 'admin/base.html' %}
+
+{% block admin_content %}
+
+<h1>Revenue: ${{ revenue }}</h1>
+
+<h2>Orders Past Month</h2>
+<canvas id="purchasesChart" width="400" height="150"></canvas>
+
+<h2>Orders by Product</h2>
+
+<table>
+  <tr>
+    <th>Product</th>
+    <th>Total Sold</th>
+    <th>Sold Past 7 Days</th>
+    <th>Sold Past 30 Days</th>
+  </tr>
+
+  {% for order in product_orders %}
+  <tr>
+    <td>{{ order.name }}</td>
+    <td>{{ order.total }}</td>
+    <td>{{ order.week }}</td>
+    <td>{{ order.month }}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'admin/base.html' %}
+
+{% block tab_content %}
+
+<div class="tab-pane fade show active" id="users">
+
+  <h1>Users</h1>
+
+  <h2>New Users Per Week</h2>
+
+  <canvas id="newUsersChart" width="900" height="600"></canvas>
+
+  <script>
+    var labels = [{% for week in week_starts %}"{{ week }}",{% endfor %}];
+    var data = [{% for count in counts %}{{ count }},{% endfor %}];
+    var ctx = document.getElementById('newUsersChart').getContext('2d');
+
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'New Users',
+          data: data,
+          backgroundColor: 'rgb(255, 99, 132)'
+        }]
+      },
+      options: {
+        responsive: false,
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+    });
+  </script>
+
+  <h2>Total Active Users: {{ active_users }}</h2>
+
+  <h2>Total Users: {{ total_users }}</h2>
+
+</div>
+
+{% endblock %}

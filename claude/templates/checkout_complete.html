@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Checkout Completed</h1>
+
+<p>
+  Thank you for your purchase! Your Stripe charge ID is {{checkout.stripe_charge_id}}.
+</p>
+
+{% endblock %}
